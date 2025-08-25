@@ -39,7 +39,7 @@ jobs:
         with:
           push: true
           context: ./src
-          file: Review-Filmes.Web/Dockerfile
+          file: ./src/Review-Filmes.Web/Dockerfile
           tags: 
-            clevernvs/desafio-devopspro-cicd:latest
-            clevernvs/desafio-devopspro-cicd:v${{ github.run_number }}
+            clevernvs/desafio-devops-cicd:latest
+            clevernvs/desafio-devops-cicd:v${{ github.run_number }}
