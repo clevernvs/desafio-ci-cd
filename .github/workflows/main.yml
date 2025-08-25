@@ -25,14 +25,15 @@ jobs:
   release:
     name: Criação de release
     runs-on: ubuntu-latest
+    needs: [build]
     steps:
       - name: Obtendo o código do projeto
         uses: actions/checkout@v4
       - name: Fazendo a autenticação no Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ DOCKERHUB_USER }}
-          password: ${{ DOCKERHUB_PWD }}
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PWD }}
       - name: Build e Push da imagem Docker
         uses: docker/build-push-action@v6
         with:
