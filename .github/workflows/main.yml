@@ -22,3 +22,23 @@ jobs:
         working-directory: ./src
         run: dotnet build Review-Filmes.sln
   
+  release:
+    name: Criação de release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtendo o código do projeto
+        uses: actions/checkout@v4
+      - name: Fazendo a autenticação no Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ DOCKERHUB_USER }}
+          password: ${{ DOCKERHUB_PWD }}
+      - name: Build e Push da imagem Docker
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          context: ./src
+          file: ./src/Review-Filmes.Web/Dockerfile
+          tags: 
+            clevernvs/desafio-devops-pro-ci-cd:latest
+            clevernvs/desafio-devops-pro-ci-cd:v${{ github.run_number }}
