@@ -27,6 +27,7 @@ jobs:
   tests:
     needs: [build]
     uses: clevernvs/desafio-ci-cd/.github/workflows/testes.yml@main
+    secrets: inherit
   
   release:
     name: Criação de Release
@@ -41,7 +42,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PWD }}
-          
+
       - name: Build e Push da imagem Docker
         uses: docker/build-push-action@v6
         with:
