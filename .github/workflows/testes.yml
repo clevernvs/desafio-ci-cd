@@ -6,7 +6,7 @@ on:
 jobs:
   unity-test:
     name: Teste de Unidade
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Obtendo o código do projeto
         uses: actions/checkout@v4
