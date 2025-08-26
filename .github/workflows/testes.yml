@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgre:
-        image: postgre:latest
+        image: postgres:latest
         ports:
           - 5432:5432
         env:
