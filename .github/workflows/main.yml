@@ -22,14 +22,14 @@ jobs:
         working-directory: ./src
         run: dotnet build Review-Filmes.sln
   
-  testes:
+  tests:
     needs: [build]
     uses: clevernvs/desafio-ci-cd/.github/workflows/testes.yml@main
   
   release:
-    name: Criação de release
+    name: Criação de Release
     runs-on: ubuntu-latest
-    needs: [testes]
+    needs: [tests]
     steps:
       - name: Obtendo o código do projeto
         uses: actions/checkout@v4
